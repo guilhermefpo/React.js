@@ -1,0 +1,11 @@
+Entendendo o JSX
+
+JSX é uma extensão de sintaxe do JavaScript que permite escrever estruturas semelhantes a HTML dentro do código JavaScript.
+
+Ele é a forma principal de criação de interfaces no React, pois descreve de maneira declarativa como a UI deve ser exibida.
+
+No JSX, é possível interpolar variáveis e expressões JavaScript utilizando chaves {}.
+
+. Também é permitido executar funções e expressões JavaScript diretamente dentro do JSX, desde que retornem um valor válido para renderização.
+
+. Além disso, podemos passar valores dinâmicos para os atributos das tags, como propriedades (props), usando {}.
