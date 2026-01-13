@@ -1,0 +1,42 @@
+. Componentes permitem dividir a aplicação em partes reutilizáveis.
+
+. Um componente é uma função ou classe que retorna JSX.
+
+. App.jsx também é um componente (geralmente o principal).
+
+. Cada componente costuma ficar em seu próprio arquivo.
+
+. Os componentes normalmente ficam em uma pasta chamada components.
+
+. Para usar um componente, é necessário importá-lo no arquivo onde será utilizado.
+
+EXEMPLO:
+
+src/
+ ├─ components/
+ │   └─ Header.jsx
+ ├─ App.jsx
+ └─ main.jsx
+
+Header.jsx
+
+function Header() {
+  return <h1>Meu Header</h1>;
+}
+
+export default Header;
+
+App.jsx
+
+import Header from "./components/Header";
+
+function App() {
+  return (
+    <>
+      <Header />
+      <p>Conteúdo da aplicação</p>
+    </>
+  );
+}
+
+export default App;
