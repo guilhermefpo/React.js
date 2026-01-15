@@ -1,0 +1,125 @@
+GUIA DE PROPS NO REACT – PARA INICIANTES
+
+1. O que são Props?
+-------------------
+- Props = propriedades.
+- Servem para passar informações de um componente para outro.
+- Pense como "parâmetros de função".
+
+Exemplo:
+function SayMyName(props) {
+  return <p>Fala aí {props.nome}!</p>;
+}
+
+<SayMyName nome="Lucas" /> 
+// Resultado: Fala aí Lucas!
+
+---
+
+2. Destructuring (Deixando mais limpo)
+--------------------------------------
+- Em vez de usar props.nome toda hora, podemos separar:
+
+function SayMyName({ nome }) {
+  return <p>Fala aí {nome}!</p>;
+}
+
+---
+
+3. Várias Props
+---------------
+- Podemos enviar muitas informações:
+
+function Pessoa({ nome, idade, profissao, foto }) {
+  return (
+    <div>
+      <img src={foto} alt={nome} />
+      <h2>Nome: {nome}</h2>
+      <p>Idade: {idade}</p>
+      <p>Profissão: {profissao}</p>
+    </div>
+  );
+}
+
+<Pessoa 
+  nome="Ana" 
+  idade={25} 
+  profissao="Designer" 
+  foto="https://picsum.photos/200" 
+/>
+
+---
+
+4. Props com diferentes tipos
+-----------------------------
+- Strings, números, booleanos, arrays ou funções.
+
+Exemplo com boolean:
+function Alerta({ ativo }) {
+  return ativo ? <p>Alerta Ativo!</p> : <p>Tudo tranquilo</p>;
+}
+
+<Alerta ativo={true} />
+
+---
+
+5. Props com Funções (Callbacks)
+---------------------------------
+- Filhos podem executar ações do pai:
+
+function Botao({ acao }) {
+  return <button onClick={acao}>Clique aqui</button>;
+}
+
+function App() {
+  function dizerOla() {
+    alert("Olá!");
+  }
+
+  return <Botao acao={dizerOla} />;
+}
+
+---
+
+6. Props Padrão
+---------------
+- Se não passar, podemos definir valor default:
+
+function Saudacao({ nome = "Visitante" }) {
+  return <p>Olá, {nome}!</p>;
+}
+
+<Saudacao />  // Resultado: Olá, Visitante!
+
+---
+
+7. Children (Conteúdo dentro do componente)
+-------------------------------------------
+function Card({ children }) {
+  return <div className="card">{children}</div>;
+}
+
+<Card>
+  <h2>Título</h2>
+  <p>Descrição do card...</p>
+</Card>
+
+---
+
+8. Resumindo
+-------------
+- Props = dados que passam do pai para o filho.
+- Use destructuring para simplificar.
+- Pode passar qualquer tipo de dado.
+- Pode passar funções para o filho chamar.
+- Pode usar children para colocar conteúdo dentro do componente.
+- Valores padrão evitam erros.
+
+---
+
+Exemplo final simples:
+function Pessoa({ nome, idade }) {
+  return <p>{nome} tem {idade} anos</p>;
+}
+
+<Pessoa nome="João" idade={30} />
