@@ -1,0 +1,91 @@
+Flask:
+
+from flask import Flask, jsonify, request
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)  # permite que o frontend acesse a API
+
+# banco de dados temporário em memória
+tasks = []
+
+@app.route("/tasks", methods=["GET"])
+def get_tasks():
+    return jsonify(tasks)
+
+@app.route("/tasks", methods=["POST"])
+def add_task():
+    data = request.get_json()
+    task = {"id": len(tasks) + 1, "title": data["title"]}
+    tasks.append(task)
+    return jsonify(task), 201
+
+@app.route("/tasks/<int:task_id>", methods=["DELETE"])
+def delete_task(task_id):
+    global tasks
+    tasks = [t for t in tasks if t["id"] != task_id]
+    return "", 204
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+REACT: 
+import { useState, useEffect } from "react";
+
+function App() {
+  const [tasks, setTasks] = useState([]);
+  const [newTask, setNewTask] = useState("");
+
+  // função para buscar tarefas do backend
+  const fetchTasks = async () => {
+    const res = await fetch("http://127.0.0.1:5000/tasks");
+    const data = await res.json();
+    setTasks(data);
+  };
+
+  useEffect(() => {
+    fetchTasks();
+  }, []);
+
+  // adicionar nova tarefa
+  const addTask = async () => {
+    if (!newTask) return;
+    const res = await fetch("http://127.0.0.1:5000/tasks", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title: newTask }),
+    });
+    const task = await res.json();
+    setTasks([...tasks, task]);
+    setNewTask("");
+  };
+
+  // deletar tarefa
+  const deleteTask = async (id) => {
+    await fetch(`http://127.0.0.1:5000/tasks/${id}`, { method: "DELETE" });
+    setTasks(tasks.filter((t) => t.id !== id));
+  };
+
+  return (
+    <div style={{ padding: "20px" }}>
+      <h1>Lista de Tarefas</h1>
+      <input
+        value={newTask}
+        onChange={(e) => setNewTask(e.target.value)}
+        placeholder="Nova tarefa"
+      />
+      <button onClick={addTask}>Adicionar</button>
+
+      <ul>
+        {tasks.map((task) => (
+          <li key={task.id}>
+            {task.title}{" "}
+            <button onClick={() => deleteTask(task.id)}>Excluir</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default App;
