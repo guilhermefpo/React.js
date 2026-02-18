@@ -26,4 +26,6 @@ Este repositório tem como objetivo:
 
 ---
 
+= npm create vite@latest . para criar gerar o React.js.
+
 📌 Repositório criado para fins de **estudo e prática**.
