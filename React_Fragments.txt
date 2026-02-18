@@ -1,0 +1,7 @@
+- Permite criação de elementos sem elemento pai.
+
+- O propósito é descomplicar os nós do DOM.
+
+- A sintaxe é <> e </>, não há um nome para teg.
+
+- Criamos no próprio JSX.
