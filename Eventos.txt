@@ -1,0 +1,7 @@
+- Os eventos de React são os mesmos eventos do DOM.
+
+-  O evento é atrelado a uma teg que irá executá-lo
+
+- Geralmente um método é atrelado a um evento.
+
+- Este método deve ser criado no componente.
