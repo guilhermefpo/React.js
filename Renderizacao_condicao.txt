@@ -1,0 +1,9 @@
+- Podemos atrelar algum elemento a um if.
+
+- Esta ação é chamada de renderização condicional.
+
+- Envolvemos as tegs em chaves {}.
+
+- Como as chaves executam JavaScript, criamos nossa condição.
+
+- É possivel usar o state para criar condições.
