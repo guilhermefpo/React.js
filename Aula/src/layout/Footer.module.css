@@ -1,0 +1,19 @@
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.footer ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+  width: 100%;
+}
+
+.footer li {
+  cursor: pointer;
+  color: rgba(41, 135, 224, 0.918);
+  font-size: 30px;
+}

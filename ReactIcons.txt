@@ -1,0 +1,7 @@
+- É um pacote de Icones externo.
+
+- Precisamos adicionar ao projeto atráves do npm.
+
+- Ele nos permite adicionar ícones ao projeto com uma sintaxe parecida de componentes.
+
+- Além disso há uma grande quantidade de ícones disponiveis.
