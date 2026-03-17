@@ -1,0 +1,69 @@
+- O React Router é um pacote para mudança de URLs da aplicação.
+
+- Podemos assim acessar outras views, sem page reload.
+
+- Trocando apenas uma parte do layout da aplicação, ou seja, o que muda de view para view.
+
+- Precisamos instalar esse pacote no projeto.
+
+- E também realizar algumas mudanças em como o App é estruturado.
+
+instalar:
+> npm install react-router-dom
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Contato from "./pages/Contato";
+import Empresa from "./pages/Empresa";
+import Navbar from "./layout/Navbar";
+import Footer from "./layout/Footer";
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Navbar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/contato" element={<Contato />} />
+        <Route path="/empresa" element={<Empresa />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+  );
+}
+
+
+export default App;
+
+pasta layout:
+import React from "react";
+import { Link } from "react-router-dom";
+import styles from "./Navbar.module.css";
+
+function Navbar() {
+  return (
+    <ul className={styles.list}>
+      <li className={styles.item}>
+        <Link to="/">Home</Link>
+      </li>
+      <li className={styles.item}>
+        <Link to="/contato">Contato</Link>
+      </li>
+      <li className={styles.item}>
+        <Link to="/empresa">Empresa</Link>
+      </li>
+    </ul>
+  );
+}
+
+export default Navbar;
+
+.list {
+  display: flex;
+  list-style: none;
+}
+
+.item {
+  margin-right: 1em;
+}

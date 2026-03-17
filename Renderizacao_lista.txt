@@ -1,0 +1,7 @@
+- Para renderizar uma lista vamos principalmente precisar de um arrey.
+
+- Depois ultilizamos a função map, para percorrer cada um dos itens.
+
+- Podendo renderizar algo na tela.
+
+- É possivel unir operadores condicionais com a renderização das listas.
